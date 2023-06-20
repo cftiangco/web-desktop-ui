@@ -1,7 +1,7 @@
 import TopNavigation from "./TopNavigation";
 import BottomNavigation from "./BottomNavigation";
 import Container from "./Container"
-import cover from "../assets/images/background.jpg"
+import cover from "../assets/images/bg3.jpg"
 
 interface IScreen {
     children?:any;
@@ -14,7 +14,7 @@ const Screen = ({children}:IScreen) => {
                 <Container>
                     {children}
                 </Container>
-            <BottomNavigation />
+            {/* <BottomNavigation /> */}
         </div>
     )
 }

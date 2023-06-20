@@ -1,13 +1,18 @@
-
 interface IIconx {
     label:string;
+    image:string;
+    onClick?:any;
 }
 
-const Iconx = ({label}:IIconx) => {
+const Iconx = ({label,image,onClick}:IIconx) => {
     return (
-        <div className="w-16 h-20 text-center">
-            <div className="bg-red-500 h-16 w-16 rounded cursor-pointer"></div>
-            <small className="text-center text-white">{label}</small>
+        <div 
+            className="w-18 h-18 text-center cursor-pointer flex items-center flex-col p-1 hover:bg-white/25 hover:rounded"
+            onClick={onClick}>
+            <div className="flex items-center flex-col">
+                <img src={image} className="w-auto h-16"/>
+            </div>
+            <p className="text-center text-white text-xs">{label}</p>
         </div>
     )
 }
