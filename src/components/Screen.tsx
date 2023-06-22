@@ -7,12 +7,17 @@ interface IScreen {
     children?:any;
     actives?:any;
     onClickActive:any;
+    onClickUserIcon:any;
 }
 
-const Screen = ({children,actives,onClickActive}:IScreen) => {
+const Screen = ({children,actives,onClickActive,onClickUserIcon}:IScreen) => {
     return (
         <div className="h-screen w-full flex flex-col bg-no-repeat bg-cover bg-top" style={{ backgroundImage: `url('${cover}')` }}>
-            <TopNavigation actives={actives} onClickActive={onClickActive}/>
+            <TopNavigation 
+                actives={actives} 
+                onClickActive={onClickActive}
+                onClickUserIcon={onClickUserIcon}
+            />
                 <Container>
                     {children}
                 </Container>

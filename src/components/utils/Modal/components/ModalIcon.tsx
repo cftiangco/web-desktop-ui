@@ -2,11 +2,12 @@
 interface IModalIcon {
     icon?:any;
     onClick?:any;
+    className?:string;
 }
 
-const ModalIcon = ({icon,onClick}:IModalIcon) => {
+const ModalIcon = ({icon,onClick,className}:IModalIcon) => {
     return (
-        <span onClick={onClick} className="cursor-pointer">
+        <span onClick={onClick} className={`cursor-pointer ${className}`}>
            {icon}
         </span>
     )
