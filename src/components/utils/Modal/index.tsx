@@ -7,6 +7,8 @@ interface IModal {
     children?:any;
     visible?:boolean;
     onClose?:any;
+    icon?:any;
+    onMinimize?:any;
 }
 
 
@@ -15,6 +17,8 @@ const Modal = ({
     children,
     visible=false,
     onClose,
+    icon,
+    onMinimize,
 }:IModal) => {
 
     if(!visible) {
@@ -28,13 +32,15 @@ const Modal = ({
 
             <div className="flex justify-between  border-b-2 bg-blue-400 rounded-t py-1">
                 
-                <div className="flex items-center justify-start ms-2">
-                    <h1 className="text-sm">{title}</h1>
+                <div className="flex items-center justify-start ms-2 gap-1">
+                    <img src={icon} className="w-5"/>
+                    <h1 className="text-sm text-white hidden md:block">{title}</h1>
                 </div>
 
                 <div className="flex items-center justify-end gap-3 me-2">
                     <ModalIcon 
                         icon={<MdOutlineHorizontalRule/>}
+                        onClick={onMinimize}
                     />
                     <ModalIcon
                         onClick={onClose} 
@@ -44,7 +50,7 @@ const Modal = ({
             </div>
 
 
-            <div>
+            <div className="m-1 p-1">
                 {children}
             </div>
 

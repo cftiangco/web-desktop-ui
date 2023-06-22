@@ -36,24 +36,44 @@ function App() {
     setApps(selected);
   }
 
+  const handleOnMinimizeModals = (value:any) => {
+    const selected = apps.map((obj:any) => {
+      if(obj.code === value.code) {
+        return {...obj,status:2}
+      }
+      return obj;
+    });
+    setApps(selected);
+  }
+
+  const handleOnclickActive = (code:string) => {
+    const selected = apps.map((obj:any) => {
+      if(obj.code === code) {
+        return {...obj,status:1}
+      }
+      return obj.status === 1 ? {...obj,status:2} : obj;
+    });
+    setApps(selected);
+  }
+
   const Renderer = (obj:any,idx:number) => {
     if(obj.status === 1) {
       switch(obj.code) {
         case "INV":
           return (
-            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)}>
+            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
                 <p>{obj.label}</p>
             </Modal>
           )
         case "BKM":
           return (
-            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)}>
+            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
                 <p>{obj.label}</p>
             </Modal>
           )
         case "USM":
           return (
-            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)}>
+            <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
                 <p>{obj.label}</p>
             </Modal>
           )
@@ -62,7 +82,7 @@ function App() {
   }
 
   return (
-    <Screen>
+    <Screen actives={apps} onClickActive={handleOnclickActive}>
 
         {apps.map((obj:any,idx:number) => (
             (Renderer(obj,idx)) 

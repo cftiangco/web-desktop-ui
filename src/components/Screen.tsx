@@ -5,12 +5,14 @@ import cover from "../assets/images/bg3.jpg"
 
 interface IScreen {
     children?:any;
+    actives?:any;
+    onClickActive:any;
 }
 
-const Screen = ({children}:IScreen) => {
+const Screen = ({children,actives,onClickActive}:IScreen) => {
     return (
         <div className="h-screen w-full flex flex-col bg-no-repeat bg-cover bg-top" style={{ backgroundImage: `url('${cover}')` }}>
-            <TopNavigation />
+            <TopNavigation actives={actives} onClickActive={onClickActive}/>
                 <Container>
                     {children}
                 </Container>
