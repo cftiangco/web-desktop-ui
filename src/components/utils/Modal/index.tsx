@@ -28,9 +28,9 @@ const Modal = ({
     return (
         <div className="h-screen w-full fixed flex justify-center items-center content-center">
 
-          <div className="w-1/2 h-1/2 bg-white rounded">
+          <div className="w-full h-full bg-white shadow">
 
-            <div className="flex justify-between  border-b-2 bg-blue-400 rounded-t py-1">
+            <div className="flex justify-between  border-b-2 bg-blue-400 py-1">
                 
                 <div className="flex items-center justify-start ms-2 gap-1">
                     <img src={icon} className="w-5"/>
@@ -50,7 +50,7 @@ const Modal = ({
             </div>
 
 
-            <div className="m-1 p-1">
+            <div className="">
                 {children}
             </div>
 

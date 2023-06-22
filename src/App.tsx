@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import './App.css'
 import Screen from './components/Screen'
 import Iconx from './components/Iconx'
@@ -6,6 +6,8 @@ import iconUserManagement from "./assets/icons/user-management.png"
 import iconBookingfrom from "./assets/icons/booking.png"
 import iconInventory from "./assets/icons/inventory.png"
 import Modal from "./components/utils/Modal"
+
+import Inventory from './components/contents/Inventory'
 
 function App() {
 
@@ -49,7 +51,7 @@ function App() {
   const handleOnclickActive = (code:string) => {
     const selected = apps.map((obj:any) => {
       if(obj.code === code) {
-        return {...obj,status:1}
+        return obj.status === 1 ? {...obj,status:2} : {...obj,status:1}
       }
       return obj.status === 1 ? {...obj,status:2} : obj;
     });
@@ -62,19 +64,19 @@ function App() {
         case "INV":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <p>{obj.label}</p>
+                <Inventory />
             </Modal>
           )
         case "BKM":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <p>{obj.label}</p>
+                <Inventory />
             </Modal>
           )
         case "USM":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <p>{obj.label}</p>
+                <Inventory />
             </Modal>
           )
       }
