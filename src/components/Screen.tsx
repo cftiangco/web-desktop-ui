@@ -1,5 +1,5 @@
 import TopNavigation from "./TopNavigation";
-import BottomNavigation from "./BottomNavigation";
+// import BottomNavigation from "./BottomNavigation";
 import Container from "./Container"
 import cover from "../assets/images/bg3.jpg"
 
