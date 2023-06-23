@@ -1,8 +1,8 @@
 import { MdOutlineClose } from "react-icons/md";
 import { MdOutlineHorizontalRule } from "react-icons/md";
-import ModalIcon from "./components/ModalIcon";
+import ModalIcon from "../Modal/components/ModalIcon";
 
-interface IModal {
+interface IFormModal {
     title?:string;
     children?:any;
     visible?:boolean;
@@ -13,39 +13,30 @@ interface IModal {
 }
 
 
-const Modal = ({
+const FormModal = ({
     title,
     children,
     visible=false,
     onClose,
-    icon,
-    onMinimize,
     className,
-}:IModal) => {
+}:IFormModal) => {
 
     if(!visible) {
         return null;
     }
 
     return (
-        <div className={`h-screen w-full fixed flex justify-center items-center content-center ${className}`}>
+        <div className={`bg-black/25 h-full w-full fixed flex justify-center items-center content-center ${className}`}>
 
-          <div className="w-full h-full bg-white shadow">
+          <div className="w-3/5 h-3/5 min-w-1/2 min-h-1/2 bg-white shadow border-b-4">
 
             <div className="flex justify-between  border-b-2 bg-blue-400 py-1">
                 
                 <div className="flex items-center justify-start ms-2 gap-1">
-                    <img src={icon} className="w-5"/>
                     <h1 className="text-sm text-white hidden md:block">{title}</h1>
                 </div>
 
                 <div className="flex items-center justify-end gap-2 me-2">
-                    
-                        <ModalIcon
-                            icon={<MdOutlineHorizontalRule size={10}/>}
-                            onClick={onMinimize}
-                        />
-     
                         <ModalIcon
                             type="close"
                             onClick={onClose} 
@@ -65,4 +56,4 @@ const Modal = ({
     )
 }
 
-export default Modal;
+export default FormModal;

@@ -9,7 +9,7 @@ import iconInventory from "./assets/icons/inventory.png"
 import iconRoomManagement from "./assets/icons/room-management.png"
 
 import Modal from "./components/utils/Modal"
-import OptionModal from './components/utils/OptionModal'
+import OptionModal,{OptionModalContainer,OptionModalItem} from './components/utils/OptionModal'
 import Inventory from './components/contents/Inventory'
 
 function App() {
@@ -75,19 +75,19 @@ function App() {
         case "BKM":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <Inventory />
+                <div>Hello World</div>
             </Modal>
           )
         case "USM":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <Inventory />
+                <div>Hello World</div>
             </Modal>
           )
         case "RMM":
           return (
             <Modal title={obj.label} key={idx} visible={true} onClose={() => handleOnCloseModals(obj)} icon={obj.icon} onMinimize={() => handleOnMinimizeModals(obj)}>
-                <Inventory />
+                <div>Hello World</div>
             </Modal>
           )
       }
@@ -98,11 +98,11 @@ function App() {
     <>
 
       <OptionModal visible={modalUserOpen} label={'Crimson'} onClose={() => setModalUserOpen(false)}>
-        <ul className="flex flex-col items-center">
-          <li className="border-b-2 py-2 cursor-pointer w-full text-center hover:bg-gray-300/75">My Account</li>
-          <li className="border-b-2 py-2 cursor-pointer w-full text-center hover:bg-gray-300/75">Settings</li>
-          <li className="border-b-2 py-2 cursor-pointer w-full text-center hover:bg-gray-300/75">Logout</li>
-        </ul>
+        <OptionModalContainer>
+          <OptionModalItem label={'My Account'} />
+          <OptionModalItem label={'Settings'} />
+          <OptionModalItem label={'Logout'} />
+        </OptionModalContainer>
       </OptionModal>
 
       <Screen actives={apps} onClickActive={handleOnclickActive} onClickUserIcon={() => setModalUserOpen(true)}>
@@ -120,6 +120,7 @@ function App() {
                         label={app.label} 
                         image={app.icon}
                         onClick={() => handleClickIcons(app)}
+                        status={app.status}
                       /> 
                   ))}
 

@@ -2,9 +2,13 @@ interface IIconx {
     label:string;
     image:string;
     onClick?:any;
+    status?:any;
 }
 
-const Iconx = ({label,image,onClick}:IIconx) => {
+const Iconx = ({label,image,onClick,status}:IIconx) => {
+    if(status<0) {
+        return;
+    }
     return (
         <div 
             className="w-18 h-18 text-center cursor-pointer flex items-center flex-col p-1 hover:bg-white/25 hover:rounded"
